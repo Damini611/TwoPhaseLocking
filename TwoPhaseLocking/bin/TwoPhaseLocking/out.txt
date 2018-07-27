@@ -1,0 +1,58 @@
+
+
+
+
+
+output
+OPERATION: b1;
+ACTIONS TAKEN: Tansaction 1 is added to the transaction table with status Active
+OPERATION: r1 (Y);
+ACTIONS TAKEN: Y is added to LockTable with Lock status Read_Locked Transaction ID: [1] Added data item to locked item list in Transaction Table [Y]
+OPERATION: w1 (Y);
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item Y Transaction Id is [1]
+OPERATION: r1 (Z);
+ACTIONS TAKEN: Z is added to LockTable with Lock status Read_Locked Transaction ID: [1] Added data item to locked item list in Transaction Table [Y, Z]
+OPERATION: b2;
+ACTIONS TAKEN: Tansaction 2 is added to the transaction table with status Active
+OPERATION: r2 (X);
+ACTIONS TAKEN: X is added to LockTable with Lock status Read_Locked Transaction ID: [2] Added data item to locked item list in Transaction Table [X]
+OPERATION: w2 (X);
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item X Transaction Id is [2]
+OPERATION: w1 (Z);
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item Z Transaction Id is [1]
+OPERATION: e1;
+ACTIONS TAKEN : operation e1; is executed. Transaction 1 has been  committed and the status in transaction table has been has been updated to committed
+Entry for Y is released from Lock Table against the transaction 1 since it has been Committed
+Entry for Z is released from Lock Table against the transaction 1 since it has been Committed
+OPERATION: r2 (Y);
+ACTIONS TAKEN: Y is added to LockTable with Lock status Read_Locked Transaction ID: [2] Added data item to locked item list in Transaction Table [X, Y]
+OPERATION: b3;
+ACTIONS TAKEN: Tansaction 3 is added to the transaction table with status Active
+OPERATION: r3 (Z);
+ACTIONS TAKEN: Z is added to LockTable with Lock status Read_Locked Transaction ID: [3] Added data item to locked item list in Transaction Table [Z]
+OPERATION: w3 (Z);	
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item Z Transaction Id is [3]
+OPERATION: w2 (Y);
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item Y Transaction Id is [2]
+OPERATION: e2;
+ACTIONS TAKEN : operation e2; is executed. Transaction 2 has been  committed and the status in transaction table has been has been updated to committed
+Entry for X is released from Lock Table against the transaction 2 since it has been Committed
+Entry for Y is released from Lock Table against the transaction 2 since it has been Committed
+OPERATION: b4;
+ACTIONS TAKEN: Tansaction 4 is added to the transaction table with status Active
+OPERATION: w4 (Y);
+ACTIONS TAKEN: Y is added to LockTablewith Lock status Write_Locked Transaction ID: [4] Added data item to locked item list in Transaction Table [Y]
+OPERATION: r3 (X);
+ACTIONS TAKEN: X is added to LockTable with Lock status Read_Locked Transaction ID: [3] Added data item to locked item list in Transaction Table [Z, X]
+OPERATION: w3 (X);
+ACTIONS TAKEN: Read Lock is upgraded to Write Lock in the Lock table for data item X Transaction Id is [3]
+OPERATION: e3;
+ACTIONS TAKEN : operation e3; is executed. Transaction 3 has been  committed and the status in transaction table has been has been updated to committed
+Entry for Z is released from Lock Table against the transaction 3 since it has been Committed
+Entry for X is released from Lock Table against the transaction 3 since it has been Committed
+OPERATION: w4(X);
+ACTIONS TAKEN: ) is added to LockTablewith Lock status Write_Locked Transaction ID: [4] Added data item to locked item list in Transaction Table [Y, )]
+OPERATION: e4;
+ACTIONS TAKEN : operation e4; is executed. Transaction 4 has been  committed and the status in transaction table has been has been updated to committed
+Entry for Y is released from Lock Table against the transaction 4 since it has been Committed
+Entry for ) is released from Lock Table against the transaction 4 since it has been Committed
